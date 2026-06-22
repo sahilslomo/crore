@@ -56,9 +56,9 @@ export default function HomePage() {
      FUNCTIONS DATA
   ========================= */
   const functions = [
-    { code: "FN3", title: "SAFETY", desc: "IMO, MLC, UNCLOS, ETC" },
+    { code: "FN3", title: "SAFETY", desc: "IMO, UNCLOS, ETC" },
     { code: "FN4B", title: "MOTOR", desc: "PISTON, LINER, ETC" },
-    { code: "FN5", title: "ELECTRICAL", desc: "EARTH FAULT, ICCP, ETC" },
+    { code: "FN5", title: "ELECTRICAL", desc: "MOTOR, ICCP, ETC" },
     { code: "FN6", title: "MEP", desc: "MAC, STP, FWG, ETC" },
   ];
 
@@ -109,7 +109,7 @@ export default function HomePage() {
           />
 
           {/* ================= BROWSE TABS ================= */}
-          <BrowseTabs />
+          <BrowseTabs auth={auth} setShowAuth={setShowAuth} />
 
           {/* ================= STATS SLIDER ================= */}
           <StatsSlider

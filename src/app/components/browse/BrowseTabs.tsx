@@ -19,7 +19,10 @@ const tabs = [
   { name: "NAVAL", icon: Ship, route: "/naval" },
 ];
 
-export default function BrowseTabs() {
+export default function BrowseTabs({
+  auth,
+  setShowAuth,
+}: any) {
   const router = useRouter();
 
   return (
@@ -27,10 +30,10 @@ export default function BrowseTabs() {
 
       {/* TITLE */}
       <h2 className="text-sm font-bold text-gray-500 mb-4">
-        BROWSE BY WRITTEN
+        BROWSE BY WRITTENS
       </h2>
 
-      {/* GRID: SAME AS FUNCTION GRID */}
+      {/* GRID */}
       <div className="grid grid-cols-2 gap-4">
 
         {tabs.map((tab) => {
@@ -39,7 +42,14 @@ export default function BrowseTabs() {
           return (
             <button
               key={tab.name}
-              onClick={() => router.push(tab.route)}
+              onClick={(e) => {
+                if (!auth?.currentUser) {
+                  setShowAuth(true);
+                  return;
+                }
+
+                router.push(tab.route);
+              }}
               className="
                 bg-white border rounded-2xl
                 p-4
@@ -52,7 +62,7 @@ export default function BrowseTabs() {
                 transition-all
               "
             >
-              {/* ICON BOX */}
+              {/* ICON */}
               <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center">
                 <Icon size={18} />
               </div>
@@ -62,10 +72,8 @@ export default function BrowseTabs() {
                 {tab.name}
               </h3>
 
-              {/* OPTIONAL LABEL (kept minimal for consistency) */}
-              <p className="text-[11px] text-gray-500 text-center">
-                Open section
-              </p>
+              {/* OPTIONAL LABEL */}
+              <p className="text-[11px] text-gray-500 text-center"></p>
             </button>
           );
         })}

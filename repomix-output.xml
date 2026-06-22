@@ -1,0 +1,1208 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.gitignore
+eslint.config.mjs
+next.config.ts
+package.json
+postcss.config.mjs
+public/file.svg
+public/globe.svg
+public/next.svg
+public/vercel.svg
+public/window.svg
+README.md
+src/app/components/auth/AuthModal.tsx
+src/app/components/browse/BrowseTabs.tsx
+src/app/components/class/ClassDropdown.tsx
+src/app/components/functions/FunctionGrid.tsx
+src/app/components/header/Header.tsx
+src/app/components/mmd/MmdPopup.tsx
+src/app/components/navbar/BottomNav.tsx
+src/app/components/stats/StatsSlider.tsx
+src/app/favicon.ico
+src/app/globals.css
+src/app/layout.tsx
+src/app/lib/firebase.ts
+src/app/page.tsx
+tsconfig.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".gitignore">
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+</file>
+
+<file path="eslint.config.mjs">
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
+
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]),
+]);
+
+export default eslintConfig;
+</file>
+
+<file path="next.config.ts">
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  /* config options here */
+};
+
+export default nextConfig;
+</file>
+
+<file path="postcss.config.mjs">
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+
+export default config;
+</file>
+
+<file path="public/file.svg">
+<svg fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 13.5V5.41a1 1 0 0 0-.3-.7L9.8.29A1 1 0 0 0 9.08 0H1.5v13.5A2.5 2.5 0 0 0 4 16h8a2.5 2.5 0 0 0 2.5-2.5m-1.5 0v-7H8v-5H3v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1M9.5 5V2.12L12.38 5zM5.13 5h-.62v1.25h2.12V5zm-.62 3h7.12v1.25H4.5zm.62 3h-.62v1.25h7.12V11z" clip-rule="evenodd" fill="#666" fill-rule="evenodd"/></svg>
+</file>
+
+<file path="public/globe.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g clip-path="url(#a)"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.27 14.1a6.5 6.5 0 0 0 3.67-3.45q-1.24.21-2.7.34-.31 1.83-.97 3.1M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.48-1.52a7 7 0 0 1-.96 0H7.5a4 4 0 0 1-.84-1.32q-.38-.89-.63-2.08a40 40 0 0 0 3.92 0q-.25 1.2-.63 2.08a4 4 0 0 1-.84 1.31zm2.94-4.76q1.66-.15 2.95-.43a7 7 0 0 0 0-2.58q-1.3-.27-2.95-.43a18 18 0 0 1 0 3.44m-1.27-3.54a17 17 0 0 1 0 3.64 39 39 0 0 1-4.3 0 17 17 0 0 1 0-3.64 39 39 0 0 1 4.3 0m1.1-1.17q1.45.13 2.69.34a6.5 6.5 0 0 0-3.67-3.44q.65 1.26.98 3.1M8.48 1.5l.01.02q.41.37.84 1.31.38.89.63 2.08a40 40 0 0 0-3.92 0q.25-1.2.63-2.08a4 4 0 0 1 .85-1.32 7 7 0 0 1 .96 0m-2.75.4a6.5 6.5 0 0 0-3.67 3.44 29 29 0 0 1 2.7-.34q.31-1.83.97-3.1M4.58 6.28q-1.66.16-2.95.43a7 7 0 0 0 0 2.58q1.3.27 2.95.43a18 18 0 0 1 0-3.44m.17 4.71q-1.45-.12-2.69-.34a6.5 6.5 0 0 0 3.67 3.44q-.65-1.27-.98-3.1" fill="#666"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h16v16H0z"/></clipPath></defs></svg>
+</file>
+
+<file path="public/next.svg">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 394 80"><path fill="#000" d="M262 0h68.5v12.7h-27.2v66.6h-13.6V12.7H262V0ZM149 0v12.7H94v20.4h44.3v12.6H94v21h55v12.6H80.5V0h68.7zm34.3 0h-17.8l63.8 79.4h17.9l-32-39.7 32-39.6h-17.9l-23 28.6-23-28.6zm18.3 56.7-9-11-27.1 33.7h17.8l18.3-22.7z"/><path fill="#000" d="M81 79.3 17 0H0v79.3h13.6V17l50.2 62.3H81Zm252.6-.4c-1 0-1.8-.4-2.5-1s-1.1-1.6-1.1-2.6.3-1.8 1-2.5 1.6-1 2.6-1 1.8.3 2.5 1a3.4 3.4 0 0 1 .6 4.3 3.7 3.7 0 0 1-3 1.8zm23.2-33.5h6v23.3c0 2.1-.4 4-1.3 5.5a9.1 9.1 0 0 1-3.8 3.5c-1.6.8-3.5 1.3-5.7 1.3-2 0-3.7-.4-5.3-1s-2.8-1.8-3.7-3.2c-.9-1.3-1.4-3-1.4-5h6c.1.8.3 1.6.7 2.2s1 1.2 1.6 1.5c.7.4 1.5.5 2.4.5 1 0 1.8-.2 2.4-.6a4 4 0 0 0 1.6-1.8c.3-.8.5-1.8.5-3V45.5zm30.9 9.1a4.4 4.4 0 0 0-2-3.3 7.5 7.5 0 0 0-4.3-1.1c-1.3 0-2.4.2-3.3.5-.9.4-1.6 1-2 1.6a3.5 3.5 0 0 0-.3 4c.3.5.7.9 1.3 1.2l1.8 1 2 .5 3.2.8c1.3.3 2.5.7 3.7 1.2a13 13 0 0 1 3.2 1.8 8.1 8.1 0 0 1 3 6.5c0 2-.5 3.7-1.5 5.1a10 10 0 0 1-4.4 3.5c-1.8.8-4.1 1.2-6.8 1.2-2.6 0-4.9-.4-6.8-1.2-2-.8-3.4-2-4.5-3.5a10 10 0 0 1-1.7-5.6h6a5 5 0 0 0 3.5 4.6c1 .4 2.2.6 3.4.6 1.3 0 2.5-.2 3.5-.6 1-.4 1.8-1 2.4-1.7a4 4 0 0 0 .8-2.4c0-.9-.2-1.6-.7-2.2a11 11 0 0 0-2.1-1.4l-3.2-1-3.8-1c-2.8-.7-5-1.7-6.6-3.2a7.2 7.2 0 0 1-2.4-5.7 8 8 0 0 1 1.7-5 10 10 0 0 1 4.3-3.5c2-.8 4-1.2 6.4-1.2 2.3 0 4.4.4 6.2 1.2 1.8.8 3.2 2 4.3 3.4 1 1.4 1.5 3 1.5 5h-5.8z"/></svg>
+</file>
+
+<file path="public/vercel.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1155 1000"><path d="m577.3 0 577.4 1000H0z" fill="#fff"/></svg>
+</file>
+
+<file path="public/window.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 2.5h13v10a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1zM0 1h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 0 12.5zm3.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5M7 4.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5" fill="#666"/></svg>
+</file>
+
+<file path="src/app/components/class/ClassDropdown.tsx">
+"use client";
+
+export default function ClassDropdown({
+  selectedClass,
+  setSelectedClass,
+}: any) {
+  return (
+    <div className="mb-8">
+      <select
+        value={selectedClass}
+        onChange={(e) => setSelectedClass(e.target.value)}
+        className="w-full bg-white border border-gray-300 rounded-2xl px-4 py-4"
+      >
+        <option value="class2">MEO CLASS 2</option>
+        <option value="class4">MEO CLASS 4</option>
+      </select>
+    </div>
+  );
+}
+</file>
+
+<file path="src/app/components/mmd/MmdPopup.tsx">
+"use client";
+
+import { X } from "lucide-react";
+
+export default function MmdPopup({
+  show,
+  setShow,
+  selectedFunction,
+  selectedClass,
+}: any) {
+  if (!show) return null;
+
+  const regions = [
+    "MUMBAI",
+    "NOIDA",
+    "KOLKATA",
+    "CHENNAI",
+    "KOCHI",
+  ];
+
+  return (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+      
+      <div className="bg-white w-full max-w-md rounded-3xl p-6">
+
+        {/* HEADER */}
+        <div className="flex justify-between items-center mb-5">
+          <h2 className="text-lg font-bold">
+            Select your MMD
+          </h2>
+
+          <button onClick={() => setShow(false)}>
+            <X />
+          </button>
+        </div>
+
+        {/* CONTEXT */}
+        <p className="text-sm text-gray-500 mb-4">
+          {selectedFunction?.title} • {selectedClass}
+        </p>
+
+        {/* CARDS */}
+        <div className="grid grid-cols-2 gap-3">
+
+          {regions.map((region, i) => (
+            <button
+              key={i}
+              className="
+                border
+                rounded-2xl
+                p-4
+                text-sm
+                font-bold
+                hover:bg-black
+                hover:text-white
+                transition-all
+              "
+              onClick={() => {
+                console.log("Selected:", region);
+                setShow(false);
+              }}
+            >
+              {region}
+            </button>
+          ))}
+
+        </div>
+
+      </div>
+
+    </div>
+  );
+}
+</file>
+
+<file path="src/app/components/navbar/BottomNav.tsx">
+"use client";
+
+import {
+  Home,
+  User,
+  BookOpen,
+  Bookmark,
+} from "lucide-react";
+
+export default function BottomNav() {
+  return (
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around p-3">
+      <Home />
+      <BookOpen />
+      <Bookmark />
+      <User />
+    </div>
+  );
+}
+</file>
+
+<file path="src/app/globals.css">
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+</file>
+
+<file path="src/app/layout.tsx">
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "Create Next App",
+  description: "Generated by create next app",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">{children}</body>
+    </html>
+  );
+}
+</file>
+
+<file path="tsconfig.json">
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
+  "exclude": ["node_modules"]
+}
+</file>
+
+<file path="src/app/components/auth/AuthModal.tsx">
+"use client";
+
+import { useEffect, useState } from "react";
+import { X, Loader2, Eye, EyeOff } from "lucide-react";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+import { auth } from "@/app/lib/firebase";
+
+export default function AuthModal({ show, setShow }: any) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [mode, setMode] = useState<"login" | "signup">("login");
+
+  const [loading, setLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
+
+  const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  // ESC CLOSE
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShow(false);
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, [setShow]);
+
+  if (!show) return null;
+
+  // EMAIL AUTH
+  const handleAuth = async () => {
+    setError("");
+    setLoading(true);
+
+    try {
+      if (mode === "login") {
+        await signInWithEmailAndPassword(auth, email, password);
+      } else {
+        await createUserWithEmailAndPassword(auth, email, password);
+      }
+
+      setShow(false);
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // GOOGLE AUTH
+  const handleGoogleLogin = async () => {
+    setError("");
+    setGoogleLoading(true);
+
+    try {
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(auth, provider);
+      setShow(false);
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setGoogleLoading(false);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
+
+      {/* BACKDROP */}
+      <div
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        onClick={() => setShow(false)}
+      />
+
+      {/* MODAL */}
+      <div className="relative w-[92%] max-w-md bg-white rounded-3xl shadow-2xl p-6">
+
+        {/* HEADER */}
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-xl font-bold text-gray-900">
+            {mode === "login" ? "Welcome back" : "Create account"}
+          </h2>
+
+          <button
+            onClick={() => setShow(false)}
+            className="p-2 rounded-xl hover:bg-gray-100"
+          >
+            <X size={18} />
+          </button>
+        </div>
+
+        {/* ERROR */}
+        {error && (
+          <div className="mb-4 text-sm bg-red-50 text-red-600 p-3 rounded-xl">
+            {error}
+          </div>
+        )}
+
+        {/* GOOGLE BUTTON (OFFICIAL STYLE) */}
+        <button
+          onClick={handleGoogleLogin}
+          disabled={googleLoading}
+          className="
+            w-full
+            flex
+            items-center
+            justify-center
+            gap-3
+            border
+            border-gray-300
+            bg-white
+            hover:bg-gray-50
+            active:bg-gray-100
+            text-gray-800
+            font-medium
+            py-3
+            rounded-xl
+            transition-all
+            disabled:opacity-60
+            disabled:cursor-not-allowed
+          "
+        >
+          {googleLoading ? (
+            <Loader2 className="animate-spin" size={18} />
+          ) : (
+            <GoogleIcon />
+          )}
+
+          <span>Continue with Google</span>
+        </button>
+
+        {/* DIVIDER */}
+        <div className="flex items-center my-5">
+          <div className="flex-1 h-px bg-gray-200" />
+          <span className="px-3 text-xs text-gray-400">OR</span>
+          <div className="flex-1 h-px bg-gray-200" />
+        </div>
+
+        {/* EMAIL */}
+        <input
+          className="w-full border rounded-xl p-3 mb-3 focus:outline-none focus:ring-2 focus:ring-black"
+          placeholder="Email address"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        {/* PASSWORD */}
+        <div className="relative mb-4">
+          <input
+            className="w-full border rounded-xl p-3 pr-10 focus:outline-none focus:ring-2 focus:ring-black"
+            placeholder="Password"
+            type={showPassword ? "text" : "password"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleAuth()}
+          />
+
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-3 top-3 text-gray-500"
+          >
+            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+          </button>
+        </div>
+
+        {/* EMAIL AUTH BUTTON */}
+        <button
+          onClick={handleAuth}
+          disabled={loading}
+          className="
+            w-full
+            bg-black
+            text-white
+            py-3
+            rounded-xl
+            flex
+            items-center
+            justify-center
+            gap-2
+            hover:opacity-90
+            disabled:opacity-60
+          "
+        >
+          {loading && <Loader2 className="animate-spin" size={18} />}
+          {mode === "login" ? "Login" : "Create account"}
+        </button>
+
+        {/* SWITCH MODE */}
+        <p
+          onClick={() =>
+            setMode(mode === "login" ? "signup" : "login")
+          }
+          className="text-center mt-5 text-sm text-blue-600 cursor-pointer"
+        >
+          {mode === "login"
+            ? "New here? Create account"
+            : "Already have account? Login"}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ================= GOOGLE ICON ================= */
+function GoogleIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 48 48">
+      <path
+        fill="#FFC107"
+        d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.4 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"
+      />
+      <path
+        fill="#FF3D00"
+        d="M6.3 14.7l6.6 4.8C14.5 16 18.9 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6.1 29.6 4 24 4 16.3 4 9.6 8.4 6.3 14.7z"
+      />
+      <path
+        fill="#4CAF50"
+        d="M24 44c5.2 0 9.9-1.9 13.5-5.1l-6.2-5.1C29.4 35.6 26.9 36.5 24 36c-5.4 0-9.7-3.3-11.3-8l-6.6 5.1C9.5 39.6 16.2 44 24 44z"
+      />
+      <path
+        fill="#1976D2"
+        d="M43.6 20.5H42V20H24v8h11.3c-1.1 3-3.2 5.4-6 6.9l6.2 5.1C38.9 36.9 44 31.1 44 24c0-1.3-.1-2.7-.4-3.5z"
+      />
+    </svg>
+  );
+}
+</file>
+
+<file path="src/app/components/browse/BrowseTabs.tsx">
+"use client";
+
+import { useRouter } from "next/navigation";
+import {
+  Anchor,
+  Settings,
+  Globe,
+  Layers,
+  Zap,
+  Ship,
+} from "lucide-react";
+
+const tabs = [
+  { name: "MOTOR", icon: Anchor, route: "/motor" },
+  { name: "MEP", icon: Settings, route: "/mep" },
+  { name: "GENERAL", icon: Globe, route: "/general" },
+  { name: "SSEP", icon: Layers, route: "/ssep" },
+  { name: "ELECTRICAL", icon: Zap, route: "/electrical" },
+  { name: "NAVAL", icon: Ship, route: "/naval" },
+];
+
+export default function BrowseTabs({
+  auth,
+  setShowAuth,
+}: any) {
+  const router = useRouter();
+
+  return (
+    <div className="mt-10">
+
+      {/* TITLE */}
+      <h2 className="text-sm font-bold text-gray-500 mb-4">
+        BROWSE BY WRITTENS
+      </h2>
+
+      {/* GRID */}
+      <div className="grid grid-cols-2 gap-4">
+
+        {tabs.map((tab) => {
+          const Icon = tab.icon;
+
+          return (
+            <button
+              key={tab.name}
+              onClick={(e) => {
+                if (!auth?.currentUser) {
+                  setShowAuth(true);
+                  return;
+                }
+
+                router.push(tab.route);
+              }}
+              className="
+                bg-white border rounded-2xl
+                p-4
+                min-h-[160px]
+
+                flex flex-col items-center justify-center gap-2
+
+                hover:shadow-md hover:border-black
+                active:scale-95
+                transition-all
+              "
+            >
+              {/* ICON */}
+              <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center">
+                <Icon size={18} />
+              </div>
+
+              {/* TITLE */}
+              <h3 className="font-bold text-sm text-center">
+                {tab.name}
+              </h3>
+
+              {/* OPTIONAL LABEL */}
+              <p className="text-[11px] text-gray-500 text-center"></p>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="src/app/components/functions/FunctionGrid.tsx">
+"use client";
+
+import Link from "next/link";
+import { Folder } from "lucide-react";
+
+export default function FunctionGrid({
+  functions,
+  selectedClass,
+  auth,
+  setShowAuth,
+}: any) {
+  return (
+    <div>
+      {/* TITLE */}
+      <h2 className="text-sm font-bold tracking-[2px] text-gray-500 mb-4">
+        BROWSE BY FUNCTION
+      </h2>
+
+      {/* GRID (KEEP SAME STRUCTURE AS YOUR FIRST PAGE STYLE) */}
+      <div className="grid grid-cols-2 gap-4">
+        {functions.map((item: any, index: number) => (
+          <Link
+            key={index}
+            href={`/topics/${selectedClass}/${item.code.toLowerCase()}`}
+            prefetch={false}
+            onClick={(e) => {
+              if (!auth?.currentUser) {
+                e.preventDefault();
+                setShowAuth(true);
+              }
+            }}
+            className="
+              bg-white border border-gray-200 rounded-2xl
+
+              p-4
+              min-h-[160px]
+
+              flex flex-col items-center justify-center text-center gap-2
+
+              transition-all duration-150
+
+              hover:shadow-md hover:-translate-y-1 hover:border-black
+
+              active:scale-95 active:shadow-inner active:translate-y-[2px]
+            "
+          >
+            {/* CODE BADGE */}
+            <div className="text-[10px] bg-black text-white px-2 py-1 rounded-md">
+              {item.code}
+            </div>
+
+            {/* ICON */}
+            <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center">
+              <Folder
+                size={32}
+                className="md:w-10 md:h-10 lg:w-8 lg:h-8"
+                strokeWidth={1.8}
+              />
+            </div>
+
+            {/* TITLE */}
+            <h3 className="font-bold text-sm">{item.title}</h3>
+
+            {/* DESCRIPTION */}
+            <p className="text-[11px] text-gray-500 leading-tight">
+              {item.desc}
+            </p>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="src/app/components/stats/StatsSlider.tsx">
+"use client";
+
+import { useEffect, useState } from "react";
+import { Users, BookOpen, MessageCircleMore } from "lucide-react";
+
+export default function StatsSlider({ stats }: any) {
+  const [activeStat, setActiveStat] = useState(0);
+
+  /* =========================
+     AUTO SLIDER LOGIC
+  ========================= */
+  useEffect(() => {
+    if (!stats?.length) return;
+
+    const interval = setInterval(() => {
+      setActiveStat((prev) =>
+        prev === stats.length - 1 ? 0 : prev + 1
+      );
+    }, 3000); // change every 3 sec
+
+    return () => clearInterval(interval);
+  }, [stats?.length]);
+
+  return (
+    <div className="mt-8 overflow-hidden md:mt-10">
+
+      <div className="relative h-[92px] md:h-[110px] overflow-hidden">
+
+        {stats.map((item: any, index: number) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-all duration-500 ease-out ${
+              activeStat === index
+                ? "opacity-100 translate-y-0 blur-0 scale-100 z-10"
+                : "opacity-0 translate-y-2 blur-sm scale-[0.98] pointer-events-none z-0"
+            }`}
+          >
+
+            <div className="
+              bg-white
+              border
+              border-gray-200
+              rounded-3xl
+              px-5
+              py-4
+              md:px-8
+              md:py-6
+              flex
+              items-center
+              justify-between
+              shadow-sm
+            ">
+
+              {/* LEFT SIDE */}
+              <div className="flex items-center gap-4">
+
+                <div className="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-black">
+
+                  {item.type === "users" && (
+                    <Users size={22} strokeWidth={2.2} />
+                  )}
+
+                  {item.type === "topics" && (
+                    <BookOpen size={22} strokeWidth={2.2} />
+                  )}
+
+                  {item.type === "questions" && (
+                    <MessageCircleMore size={22} strokeWidth={2.2} />
+                  )}
+
+                </div>
+
+                <div className="h-[44px] flex flex-col justify-center">
+
+                  <p className="text-[22px] font-bold text-black leading-none">
+                    {item.value}
+                  </p>
+
+                  <div className="flex items-center gap-2 mt-1">
+
+                    {/* glowing dot ONLY for active slide */}
+                    {activeStat === index && (
+                      <div className="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.9)] animate-pulse" />
+                    )}
+
+                    <p className="text-sm text-gray-600">
+                      {item.text}
+                    </p>
+
+                  </div>
+
+                </div>
+              </div>
+
+              {/* DOT NAV */}
+              <div className="flex gap-1.5">
+
+                {stats.map((_: any, dotIndex: number) => (
+                  <div
+                    key={dotIndex}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      activeStat === dotIndex
+                        ? "bg-black"
+                        : "bg-gray-300"
+                    }`}
+                  />
+                ))}
+
+              </div>
+
+            </div>
+          </div>
+        ))}
+
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="src/app/lib/firebase.ts">
+import { initializeApp } from "firebase/app";
+import {
+    getAuth,
+    setPersistence,
+    browserLocalPersistence,
+} from "firebase/auth";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBXVFxfT12IXSJHzGAhKpQF18sPmBOMutQ",
+    authDomain: "navik-reloaded.firebaseapp.com",
+    projectId: "navik-reloaded",
+    storageBucket: "navik-reloaded.firebasestorage.app",
+    messagingSenderId: "557866754279",
+    appId: "1:557866754279:web:491ed0279ca0fc3c428242",
+    measurementId: "G-0KJWKY67WE"
+};
+
+const app = initializeApp(firebaseConfig);
+
+export const auth = getAuth(app);
+
+// 🔥 KEEP USER LOGGED IN AFTER REFRESH
+setPersistence(auth, browserLocalPersistence)
+    .then(() => {
+        console.log("Firebase persistence enabled");
+    })
+    .catch((err) => {
+        console.error("Persistence error:", err);
+    });
+</file>
+
+<file path="package.json">
+{
+  "name": "crore",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "firebase": "^12.15.0",
+    "lucide-react": "^1.21.0",
+    "next": "16.2.9",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.9",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+</file>
+
+<file path="src/app/page.tsx">
+"use client";
+
+import { useState, useEffect } from "react";
+
+import Header from "@/app/components/header/Header";
+import ClassDropdown from "@/app/components/class/ClassDropdown";
+import FunctionGrid from "@/app/components/functions/FunctionGrid";
+import BrowseTabs from "@/app/components/browse/BrowseTabs";
+import StatsSlider from "@/app/components/stats/StatsSlider";
+import BottomNav from "@/app/components/navbar/BottomNav";
+import AuthModal from "@/app/components/auth/AuthModal";
+import MmdPopup from "@/app/components/mmd/MmdPopup";
+
+import { auth } from "@/app/lib/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+
+export default function HomePage() {
+  /* =========================
+     STATE
+  ========================= */
+  const [user, setUser] = useState<any>(null);
+
+  const [selectedClass, setSelectedClass] = useState("class2");
+
+  const [showAuth, setShowAuth] = useState(false);
+
+  const [showMmd, setShowMmd] = useState(false);
+
+  const [selectedFunction, setSelectedFunction] = useState<any>(null);
+
+  const [activeStat, setActiveStat] = useState(0);
+
+  /* =========================
+     FIREBASE AUTH LISTENER
+  ========================= */
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (u) => {
+      setUser(u);
+    });
+
+    return () => unsub();
+  }, []);
+
+  /* =========================
+     AUTO STATS SLIDER
+  ========================= */
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveStat((prev) => (prev === 2 ? 0 : prev + 1));
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  /* =========================
+     FUNCTIONS DATA
+  ========================= */
+  const functions = [
+    { code: "FN3", title: "SAFETY", desc: "IMO, UNCLOS, ETC" },
+    { code: "FN4B", title: "MOTOR", desc: "PISTON, LINER, ETC" },
+    { code: "FN5", title: "ELECTRICAL", desc: "MOTOR, ICCP, ETC" },
+    { code: "FN6", title: "MEP", desc: "MAC, STP, FWG, ETC" },
+  ];
+
+  /* =========================
+     STATS DATA
+  ========================= */
+  const stats = [
+    { type: "users", value: "0", text: "users online Today" },
+    { type: "topics", value: "0", text: "topics viewed Today" },
+    { type: "questions", value: "0", text: "questions viewed Today" },
+  ];
+
+  return (
+    <>
+      <main className="min-h-screen bg-[#f5f5f5] pb-[120px]">
+        <div className="max-w-7xl mx-auto px-5 pt-5">
+
+          {/* ================= HEADER ================= */}
+          <Header
+            user={user}
+            setShowAuth={setShowAuth}
+          />
+
+          {/* ================= CLASS SELECT ================= */}
+          <div className="mt-4 md:mt-6">
+            <ClassDropdown
+              selectedClass={selectedClass}
+              setSelectedClass={setSelectedClass}
+            />
+          </div>
+
+          {/* ================= FUNCTION GRID ================= */}
+          <FunctionGrid
+            functions={functions}
+            selectedClass={selectedClass}
+            user={user}
+            setShowAuth={setShowAuth}
+            setShowMmd={setShowMmd}
+            setSelectedFunction={setSelectedFunction}
+          />
+
+          {/* ================= MMD POPUP ================= */}
+          <MmdPopup
+            show={showMmd}
+            setShow={setShowMmd}
+            selectedFunction={selectedFunction}
+            selectedClass={selectedClass}
+          />
+
+          {/* ================= BROWSE TABS ================= */}
+          <BrowseTabs auth={auth} setShowAuth={setShowAuth} />
+
+          {/* ================= STATS SLIDER ================= */}
+          <StatsSlider
+            stats={stats}
+            activeStat={activeStat}
+          />
+
+        </div>
+      </main>
+
+      {/* ================= BOTTOM NAV ================= */}
+      <BottomNav />
+
+      {/* ================= AUTH MODAL ================= */}
+      <AuthModal
+        show={showAuth}
+        setShow={setShowAuth}
+      />
+    </>
+  );
+}
+</file>
+
+<file path="src/app/components/header/Header.tsx">
+"use client";
+
+import { useState } from "react";
+import { Sailboat, User, LogOut } from "lucide-react";
+import { signOut } from "firebase/auth";
+import { auth } from "@/app/lib/firebase";
+
+export default function Header({
+  user,
+  setShowAuth,
+}: {
+  user: any;
+  setShowAuth: (v: boolean) => void;
+}) {
+  const [open, setOpen] = useState(false);
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    setOpen(false);
+  };
+
+  const shortEmail = user?.email
+    ? user.email.length > 14
+      ? user.email.slice(0, 14) + "..."
+      : user.email
+    : "";
+
+  return (
+    <div className="bg-white border border-gray-200 rounded-3xl px-5 py-4 md:px-6 md:py-5 shadow-sm">
+
+      <div className="flex items-center justify-between">
+
+        {/* LEFT SIDE (LOGO + TEXT) */}
+        <div className="flex items-center gap-3 min-w-0">
+
+          <div className="w-12 h-12 flex items-center justify-center rotate-[-8deg] flex-shrink-0">
+            <Sailboat size={30} />
+          </div>
+
+          <div className="leading-tight min-w-0">
+            <h1 className="text-xl font-bold tracking-tight truncate">
+              NAVIK
+            </h1>
+            <p className="text-xs text-gray-500 truncate">
+              Sail towards COC
+            </p>
+          </div>
+
+        </div>
+
+        {/* RIGHT SIDE */}
+        {user ? (
+          <div className="flex items-center gap-3 flex-shrink-0">
+
+            {/* EMAIL BOX (COMPACT) */}
+            <div className="bg-gray-100 px-2 py-2 rounded-xl w-[60px]">
+              <p className="text-[9px] text-gray-500 leading-none">
+                Signed in
+              </p>
+
+              <p className="text-[11px] font-medium truncate">
+                {shortEmail}
+              </p>
+            </div>
+
+            {/* LOGOUT */}
+            <button
+              onClick={handleLogout}
+              className="w-10 h-9 rounded-2xl bg-black text-white flex items-center justify-center"
+            >
+              <LogOut size={16} />
+            </button>
+
+          </div>
+        ) : (
+          <button
+            onClick={() => setShowAuth(true)}
+            className="bg-black text-white px-4 py-2 rounded-xl flex items-center gap-1 text-sm font-medium"
+          >
+            <User size={16} />
+            Login
+          </button>
+        )}
+
+      </div>
+    </div>
+  );
+}
+</file>
+
+</files>
