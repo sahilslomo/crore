@@ -1,42 +1,68 @@
 "use client";
 
-import Link from "next/link";
 import { Folder } from "lucide-react";
 
 export default function FunctionGrid({
   functions,
-  selectedClass,
+  user,
   setShowAuth,
+  setShowMmd,
+  setSelectedFunction,
 }: any) {
   return (
     <div>
+      {/* TITLE */}
       <h2 className="text-sm font-bold text-gray-500 mb-4">
         BROWSE BY FUNCTION
       </h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {/* GRID: 2 COLUMNS */}
+      <div className="grid grid-cols-2 gap-4">
 
         {functions.map((item: any, index: number) => (
-          <Link
+          <button
             key={index}
-            href={`/topics/${selectedClass}/${item.code.toLowerCase()}`}
-            onClick={(e) => {
-              if (typeof window !== "undefined" && !localStorage.getItem("user")) {
-                e.preventDefault();
+            onClick={() => {
+              if (!user) {
                 setShowAuth(true);
+                return;
               }
+
+              setSelectedFunction(item);
+              setShowMmd(true);
             }}
-            className="bg-white border rounded-2xl p-4 min-h-[180px]"
+            className="
+              bg-white border rounded-2xl
+              p-4
+              min-h-[160px]
+
+              flex flex-col items-center justify-center gap-2
+
+              hover:shadow-md hover:border-black
+              active:scale-95
+              transition-all
+            "
           >
-            <div className="text-xs bg-black text-white px-3 py-1 rounded-lg w-fit mb-3">
+            {/* ICON BOX (same as tabs) */}
+            <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center">
+              <Folder size={18} />
+            </div>
+
+            {/* CODE */}
+            <div className="text-[10px] bg-black text-white px-2 py-1 rounded-md">
               {item.code}
             </div>
 
-            <Folder size={28} className="mb-3" />
+            {/* TITLE */}
+            <h3 className="font-bold text-sm text-center">
+              {item.title}
+            </h3>
 
-            <h3 className="font-bold">{item.title}</h3>
-            <p className="text-xs text-gray-500">{item.desc}</p>
-          </Link>
+            {/* DESCRIPTION */}
+            <p className="text-[11px] text-gray-500 text-center leading-tight">
+              {item.desc}
+            </p>
+          </button>
         ))}
       </div>
     </div>
