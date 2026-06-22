@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Sailboat, User, LogOut } from "lucide-react";
 import { signOut } from "firebase/auth";
 import { auth } from "@/app/lib/firebase";
@@ -11,53 +12,53 @@ export default function Header({
   user: any;
   setShowAuth: (v: boolean) => void;
 }) {
+  const [open, setOpen] = useState(false);
+
   const handleLogout = async () => {
-    try {
-      await signOut(auth);
-    } catch (err) {
-      console.error(err);
-    }
+    await signOut(auth);
+    setOpen(false);
   };
 
   const shortEmail = user?.email
-    ? user.email.length > 16
-      ? user.email.slice(0, 16) + "..."
+    ? user.email.length > 14
+      ? user.email.slice(0, 14) + "..."
       : user.email
     : "";
 
   return (
-    <div className="bg-white border border-gray-200 rounded-3xl p-4 md:p-6 mb-5 shadow-sm">
+    <div className="bg-white border border-gray-200 rounded-3xl px-5 py-4 md:px-6 md:py-5 shadow-sm">
 
-      {/* TOP ROW (MOBILE SAFE STACKING) */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="flex items-center justify-between">
 
-        {/* LEFT */}
+        {/* LEFT SIDE (LOGO + TEXT) */}
         <div className="flex items-center gap-3 min-w-0">
-          <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rotate-[-8deg] flex-shrink-0">
-            <Sailboat size={30} className="text-black" />
+
+          <div className="w-12 h-12 flex items-center justify-center rotate-[-8deg] flex-shrink-0">
+            <Sailboat size={30} />
           </div>
 
-          <div className="min-w-0">
-            <h1 className="text-xl sm:text-2xl font-bold tracking-tight truncate">
+          <div className="leading-tight min-w-0">
+            <h1 className="text-xl font-bold tracking-tight truncate">
               NAVIK
             </h1>
-            <p className="text-xs sm:text-sm text-gray-500 truncate">
+            <p className="text-xs text-gray-500 truncate">
               Sail towards COC
             </p>
           </div>
+
         </div>
 
-        {/* RIGHT */}
-        {user?.email ? (
-          <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
+        {/* RIGHT SIDE */}
+        {user ? (
+          <div className="flex items-center gap-3 flex-shrink-0">
 
-            {/* USER CARD */}
-            <div className="bg-gray-100 px-3 py-2 rounded-2xl flex-1 sm:flex-none sm:w-[150px] min-w-0">
-              <p className="text-[10px] sm:text-xs text-gray-500">
+            {/* EMAIL BOX (COMPACT) */}
+            <div className="bg-gray-100 px-2 py-2 rounded-xl w-[80px]">
+              <p className="text-[9px] text-gray-500 leading-none">
                 Signed in
               </p>
 
-              <p className="text-xs sm:text-sm font-medium truncate">
+              <p className="text-[11px] font-medium truncate">
                 {shortEmail}
               </p>
             </div>
@@ -65,31 +66,22 @@ export default function Header({
             {/* LOGOUT */}
             <button
               onClick={handleLogout}
-              className="
-                w-10 h-10 sm:w-11 sm:h-11
-                rounded-2xl
-                bg-black
-                text-white
-                flex
-                items-center
-                justify-center
-                flex-shrink-0
-                hover:opacity-90
-                transition
-              "
+              className="w-10 h-9 rounded-2xl bg-black text-white flex items-center justify-center"
             >
               <LogOut size={16} />
             </button>
+
           </div>
         ) : (
           <button
             onClick={() => setShowAuth(true)}
-            className="bg-black text-white px-4 py-2 rounded-xl flex items-center gap-2 text-sm font-medium w-full sm:w-auto justify-center"
+            className="bg-black text-white px-4 py-2 rounded-xl flex items-center gap-1 text-sm font-medium"
           >
             <User size={16} />
             Login
           </button>
         )}
+
       </div>
     </div>
   );
